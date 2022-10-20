@@ -2,7 +2,15 @@
     <div class="home">
         <Header />
         <div class="main">
-            <div class="main-left"></div>
+            <div class="main-left">
+                <Date />
+                <Title title="全省" />
+                <Tigger />
+                <Title title="告警记录" />
+                <AlarmLog />
+                <Title title="轮播内容" />
+                <Swiper />
+            </div>
             <div class="main-content"></div>
             <div class="main-right"></div>
         </div>
@@ -11,10 +19,15 @@
 
 <script>
 import Header from '../components/Header'
+import Title from '../components/Title'
+import Date from '../components/left/Date'
+import Tigger from '../components/left/Tigger'
+import AlarmLog from '../components/left/AlarmLog'
+import Swiper from '../components/left/Swiper'
 
 export default {
     name: 'Home',
-    components: { Header },
+    components: { Header, Title, Date, Tigger, AlarmLog, Swiper },
     data () {
         return {
 

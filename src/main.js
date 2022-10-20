@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import ViewUI from 'view-design'
 import './less/common.less'
+import VueAnimateNumber from 'vue-animate-number'
+
 ViewUI.Notice.config({
     top: 60
 })
 Vue.use(ViewUI)
+Vue.use(VueAnimateNumber)
 Vue.config.productionTip = false
 
 Vue.prototype.$APP_VERSION = process.env.VUE_APP_VERSION
