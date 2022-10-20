@@ -2,7 +2,7 @@ module.exports = {
     extends: ['@commitlint/config-conventional'],
     rules: {
         'type-enum': [2, 'always', [
-            'feature', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert', 'del'
+            'feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert', 'del'
         ]],
         'type-case': [0],
         'type-empty': [0],
