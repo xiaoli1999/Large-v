@@ -34,6 +34,7 @@ export default {
 
     > span {
         margin-top: 20px;
+        font-family: AlimamaShuHeiTi;
     }
 }
 </style>
