@@ -18,27 +18,7 @@ export default {
 </script>
 
 <style lang="less">
-
-.size {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-html, body {
-    .size;
-}
-
 #app {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 </style>
