@@ -69,10 +69,13 @@ export default {
                     {
                         type: 'category',
                         data: ['模型一', '模型二', '模型三', '模型四', '模型五'],
+                        nameTextStyle: {
+                            color: '#fff'
+                        },
                         axisLine: {
                             show: true,
                             lineStyle: {
-                                color: '#3582DA90'
+                                color: '#f4f4f4'
                             }
                         },
                         splitLine: {
@@ -91,7 +94,11 @@ export default {
                 yAxis: [
                     {
                         type: 'value',
-                        splitLine: { show: false }
+                        splitLine: { show: false },
+                        axisLabel: {
+                            show: true,
+                            color: '#ABB0B8'
+                        }
                     },
                     {
                         min: 0, // 最小百分比
@@ -104,11 +111,11 @@ export default {
                         axisLabel: {
                             show: true,
                             interval: 0, // 使x轴文字显示全
-                            color: '#666666',
+                            color: '#ABB0B8',
                             formatter: '{value}%' // y轴数值，带百分号
                         },
-                        axisLine: { show: false, lineStyle: { color: '#f4f4f480' } },
-                        splitLine: { show: false, lineStyle: { type: 'dashed', color: '#f4f4f480' } }
+                        axisLine: { show: false, lineStyle: { color: '#ABB0B8' } },
+                        splitLine: { show: true, lineStyle: { type: 'dashed', color: '#f7f8fa20' } }
                     }
                 ],
                 series: [

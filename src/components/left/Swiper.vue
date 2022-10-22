@@ -263,10 +263,10 @@ export default {
             this.policeChart.setOption(option)
         },
         enter () {
-            this.$nextTick(() => this.autoPlay = false)
+            this.$nextTick(() => (this.autoPlay = true))
         },
         leave () {
-            this.$nextTick(() => this.autoPlay = true)
+            this.$nextTick(() => (this.autoPlay = false))
         }
     }
 }
