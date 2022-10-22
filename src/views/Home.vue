@@ -11,8 +11,21 @@
                 <Title title="轮播内容" />
                 <Swiper />
             </div>
-            <div class="main-content"></div>
-            <div class="main-right"></div>
+            <div class="main-content">
+                <img class="map-wrap" src="../assets/img/map-wrap.png" alt="">
+                <img class="map-bottom" src="../assets/img/map-bottom.png" alt="">
+                <Map />
+            </div>
+            <div class="main-right">
+                <Title title="区县纬度" style="margin-top: 0" />
+                <Area />
+                <Title title="时间轴展示" />
+                <Time />
+                <Title title="模型纬度" />
+                <Model />
+                <Title title="防诈建议" />
+                <Suggest />
+            </div>
         </div>
     </div>
 </template>
@@ -25,9 +38,16 @@ import Tigger from '../components/left/Tigger'
 import AlarmLog from '../components/left/AlarmLog'
 import Swiper from '../components/left/Swiper'
 
+import Map from '../components/Map'
+
+import Area from '../components/right/Area'
+import Time from '../components/right/Time'
+import Model from '../components/right/Model'
+import Suggest from '../components/right/Suggest'
+
 export default {
     name: 'Home',
-    components: { Header, Title, Date, Tigger, AlarmLog, Swiper },
+    components: { Header, Title, Date, Tigger, AlarmLog, Swiper, Map, Area, Model, Time, Suggest },
     data () {
         return {
 
@@ -68,12 +88,32 @@ export default {
         .main-right {
             min-width: 440px;
             height: 100%;
-            border: 1px solid #469221;
+            //border: 1px solid #469221;
 
         }
 
         .main-content {
+            position: relative;
             flex: 1;
+            height: 100%;
+
+            .map-wrap {
+                position: absolute;
+                width: 994px;
+                height: 540px;
+                inset: 0;
+                margin: auto;
+            }
+
+            .map-bottom {
+                position: absolute;
+                width: 646px;
+                height: 405px;
+                left: 0;
+                right: 0;
+                bottom: 60px;
+                margin-inline: auto;
+            }
         }
     }
 }

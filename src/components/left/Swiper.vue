@@ -1,6 +1,6 @@
 <template>
     <div class="Swiper">
-        <Carousel :value="0">
+        <Carousel v-model="swiper" :autoplay="autoPlay" :autoplay-speed="3600" @mouseenter.native="enter" @mouseleave.native="leave">
             <CarouselItem>
                 <div class="item table">
                     <div class="table-row row1">
@@ -65,22 +65,208 @@
                 </div>
             </CarouselItem>
             <CarouselItem>
-                <div class="item">123321举报号码</div>
+                <div id="report" class="item"></div>
             </CarouselItem>
             <CarouselItem>
-                <div class="item">公安侦办号码</div>
+                <div id="police" class="item"></div>
             </CarouselItem>
         </Carousel>
     </div>
 </template>
 
 <script>
+import * as echarts from 'echarts'
 
 export default {
     name: 'Swiper',
     data () {
         return {
+            swiper: 0,
+            autoPlay: true,
+            reportChart: null,
+            policeChart: null
+        }
+    },
+    mounted () {
+        this.initReportChart()
+        this.initPoliceChart()
+    },
+    methods: {
+        initReportChart () {
+            const mapDom = document.getElementById('report')
+            const myChart = echarts.init(mapDom)
+            myChart.clear()
+            this.reportChart = myChart
 
+            const option = {
+                title: {
+                    text: '12321举报号码',
+                    top: 10,
+                    left: '30%',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: '16'
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    fontSize: 10,
+                    color: '#eee',
+                    formatter: (data) => (data.value || '')
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: [
+                        {
+                            name: '2021',
+                            textStyle: { color: '#fff' },
+                            itemStyle: { color: '#75DCFC' }
+                        },
+                        {
+                            name: '2022',
+                            textStyle: { color: '#fff' },
+                            itemStyle: { color: '#F5B53C' }
+                        }
+                    ],
+                    bottom: 10
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#fff',
+                            fontSize: '8'
+                        },
+                        // prettier-ignore
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                type: 'dotted',
+                                color: 'rgba(255, 255, 255,0.3)'
+                            }
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: '2021',
+                        type: 'bar',
+                        color: '#75DCFC',
+                        data: [
+                            51, 23, 32, 41, 33, 28, 20, 26, 22, 18, 10, 8
+                        ]
+                    },
+                    {
+                        name: '2022',
+                        type: 'bar',
+                        color: '#F5B53C',
+                        data: [
+                            8, 6, 12, 6, 2, 1, 0, 0, 0, 0, 0, 0
+                        ]
+                    }
+                ]
+            }
+            this.reportChart.setOption(option)
+        },
+        initPoliceChart () {
+            const mapDom = document.getElementById('police')
+            const myChart = echarts.init(mapDom)
+            myChart.clear()
+            this.policeChart = myChart
+
+            const option = {
+                title: {
+                    text: '公安侦办号码',
+                    top: 10,
+                    left: '30%',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: '16'
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    fontSize: 10,
+                    color: '#eee',
+                    formatter: (data) => (data.value || '')
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: [
+                        {
+                            name: '2021',
+                            textStyle: { color: '#fff' },
+                            itemStyle: { color: '#75DCFC' }
+                        },
+                        {
+                            name: '2022',
+                            textStyle: { color: '#fff' },
+                            itemStyle: { color: '#F5B53C' }
+                        }
+                    ],
+                    bottom: 10
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#fff',
+                            fontSize: '8'
+                        },
+                        // prettier-ignore
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                type: 'dotted',
+                                color: 'rgba(255, 255, 255,0.3)'
+                            }
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: '2021',
+                        type: 'bar',
+                        color: '#75DCFC',
+                        data: [
+                            8, 6, 12, 6, 2, 1, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        name: '2022',
+                        type: 'bar',
+                        color: '#F5B53C',
+                        data: [
+                            51, 23, 32, 41, 33, 28, 20, 26, 22, 18, 10, 8
+                        ]
+                    }
+                ]
+            }
+            this.policeChart.setOption(option)
+        },
+        enter () {
+            this.$nextTick(() => this.autoPlay = false)
+        },
+        leave () {
+            this.$nextTick(() => this.autoPlay = true)
         }
     }
 }
@@ -108,27 +294,28 @@ export default {
 
     .table {
         box-sizing: border-box;
-        border: .5px solid #f4f4f480;
+        border: .5px solid #f4f4f460;
         border-radius: 4px;
         font-size: 12px;
+        color: #f4f4f4;
 
         .line-w {
             width: 100%;
             height: 1px;
-            background: #f4f4f480;
+            background: #f4f4f460;
         }
 
         .line-h {
             width: 1px;
             height: 100%;
-            background: #f4f4f480;
+            background: #f4f4f460;
         }
 
         .table-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: .5px solid #f4f4f480;
+            border-bottom: .5px solid #f4f4f460;
 
             .table-col1 {
                 width: 100px;
@@ -160,7 +347,6 @@ export default {
                 line-height: 36px;
                 text-align: center;
                 font-size: 13px;
-                color: #fff;
                 font-weight: 600;
                 letter-spacing: 1px;
             }
@@ -199,7 +385,7 @@ export default {
                 text-align: center;
 
                 div {
-                    border-bottom: .5px solid #f4f4f480;
+                    border-bottom: .5px solid #f4f4f460;
                 }
             }
         }
