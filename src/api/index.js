@@ -1,5 +1,7 @@
-import http from '../libs/http.tools'
+// import http from '../libs/http.tools'
+import axios from 'axios'
 
 export const getJson = () => {
-    return http.get('https://geo.datav.aliyun.com/areas_v2/bound/140000_full.json')
+    // https://geo.datav.aliyun.com/areas_v2/bound/140000_full.json
+    return axios.get('shanxi.json')
 }

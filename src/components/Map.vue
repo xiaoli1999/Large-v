@@ -23,7 +23,8 @@ export default {
     },
     methods: {
         async initData () {
-            this.mapData = await getJson()
+            const { data } = await getJson()
+            this.mapData = data
         },
         initMap () {
             echarts.registerMap('shanxi', this.mapData)
