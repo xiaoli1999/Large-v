@@ -101,7 +101,10 @@ export default {
                 position: absolute;
                 width: 994px;
                 height: 540px;
-                inset: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
                 margin: auto;
             }
 
@@ -109,10 +112,8 @@ export default {
                 position: absolute;
                 width: 646px;
                 height: 405px;
-                left: 0;
-                right: 0;
                 bottom: 60px;
-                margin-inline: auto;
+                left: calc(50% - 323px);
             }
         }
     }

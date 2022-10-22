@@ -256,9 +256,10 @@ export default {
     position: absolute;
     width: 700px;
     height: 800px;
-    inset: 0;
-    bottom: 240px;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: -540px;
     z-index: 100;
 }
 </style>
